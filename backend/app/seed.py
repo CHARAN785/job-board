@@ -14,9 +14,10 @@ def seed_data(db: Session):
     if db.query(User).first():
         return
 
-    admin = User(name="Admin User", email="admin@jobboard.com", hashed_password=hash_password("password123"), role=UserRole.admin, location="Hyderabad")
-    recruiter = User(name="Priya Recruiter", email="recruiter@jobboard.com", hashed_password=hash_password("password123"), role=UserRole.recruiter, location="Hyderabad")
-    candidate = User(name="Chaitanya Candidate", email="candidate@jobboard.com", hashed_password=hash_password("password123"), role=UserRole.candidate, location="Hyderabad", skills="Python, React, FastAPI, PostgreSQL")
+    admin = User(name="Admin User", email="admin@jobboard.com", hashed_password=hash_password("admin123"))
+    recruiter = User(name="Priya Recruiter", email="recruiter@jobboard.com", hashed_password=hash_password("admin123"))
+    candidate = User(name="Charan Candidate", email="candidate@jobboard.com", hashed_password=hash_password("admin123"))
+    
     db.add_all([admin, recruiter, candidate])
     db.commit()
     db.refresh(recruiter)
